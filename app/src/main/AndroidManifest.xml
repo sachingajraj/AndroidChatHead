@@ -17,10 +17,28 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ChatHeadService" > </service>
+        <service android:name=".ChatHeadService" >
+            <intent-filter>
+                <action android:name="com.example.sgajraj.androidchathead.ChatHeadService"/>
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:enabled="true"
+            android:name="receiver.LockScreenReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
 </manifest>
